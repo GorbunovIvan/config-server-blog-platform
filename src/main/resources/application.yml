@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+#          uri: file:///D:/Java/projects/microservices/blog-platform-spring-cloud/config-repo-blog-platform
+          uri: https://github.com/GorbunovIvan/config-repo-blog-platform.git
+          username: <github-username>
+          password: <github-password>
+          default-label: main
+          search-paths: "{application}"
