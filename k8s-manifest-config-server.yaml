@@ -1,0 +1,39 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: blog-platform-config-server-deployment
+  labels:
+    app: blog-platform-config-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: blog-platform-config-server
+  template:
+    metadata:
+      labels:
+        project: blog-platform-config-server
+    spec:
+      containers:
+        - name: config-server
+          image: ivangorbunovv/blog-platform-spring-cloud:config-server-blog-platform-image
+          ports:
+            - containerPort: 8888
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  labels:
+     env  : dev
+     owner: IvanGorbunov
+spec:
+  selector:
+    project: blog-platform-config-server
+  ports:
+    - name      : config-server-listener
+      protocol  : TCP
+      port      : 8888
+      targetPort: 8888
+  #type: CLusterIP

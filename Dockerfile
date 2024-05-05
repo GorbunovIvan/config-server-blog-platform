@@ -9,4 +9,4 @@ EXPOSE 8888
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 # Run:
-#   'docker build -t config-server-blog-platform-image .'
+#   'docker build -t ivangorbunovv/config-server-blog-platform-image .'
